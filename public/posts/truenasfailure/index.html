@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>TrueNAS Scale Limitations :: Tdebian</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Failures in TrueNas Scale" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/truenasfailure/" />
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="/img/theme-colors/blue.png">
+  <link rel="apple-touch-icon" href="/img/theme-colors/blue.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="TrueNAS Scale Limitations">
+<meta property="og:description" content="Failures in TrueNas Scale" />
+<meta property="og:url" content="/posts/truenasfailure/" />
+<meta property="og:site_name" content="Tdebian" />
+
+  
+    <meta property="og:image" content="/img/favicon/blue.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-06-22 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+</head>
+<body class="blue">
+
+
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Tdebian
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/manifests">Manifests</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/scripts">Scripts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+      
+        
+          <li><a href="/manifests" >Manifests</a></li>
+        
+      
+        
+          <li><a href="/posts" >Posts</a></li>
+        
+      
+        
+          <li><a href="/scripts" >Scripts</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/truenasfailure/">TrueNAS Scale Limitations</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-06-22</time>
+    
+</div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="/tags/k8s/">k8s</a>&nbsp;
+      
+      #<a href="/tags/k3s/">k3s</a>&nbsp;
+      
+      #<a href="/tags/nas/">nas</a>&nbsp;
+      
+      #<a href="/tags/truenas/">truenas</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Navigating the complexities of TrueNAS Scale can be challenging, especially for someone trying to integrate it with Kubernetes. While TrueNAS comes with helpful guardrails designed to prevent mishaps, they end up hindering flexibility and customization—particularly for users who want to run a full-fledged Kubernetes environment.</p>
+<hr>
+<h2 id="the-problem-guardrails-vs-flexibility">The Problem: Guardrails vs Flexibility<a href="#the-problem-guardrails-vs-flexibility" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>As someone who&rsquo;s not an expert in TrueNAS, I’ve spent some time exploring its documentation and architecture. I quickly ran into a major limitation: the rigid ecosystem designed to keep users from breaking things. While these &ldquo;guardrails&rdquo; are helpful for less technical users, they prevent you from utilizing the full range of features you’d expect in a Linux distribution.</p>
+<p>A prime example is my attempt to install <strong>k3s</strong> via a package manager. TrueNAS doesn’t allow the use of traditional package managers like APT or YUM. Instead, it forces users to rely on its UI and App Store, which felt restrictive for what I was trying to achieve. I initially shrugged this off as a minor inconvenience, but it was just the beginning of my frustrations.</p>
+<hr>
+<h2 id="a-new-issue-mounting-persistent-volumes">A New Issue: Mounting Persistent Volumes<a href="#a-new-issue-mounting-persistent-volumes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Fast forward to today, I encountered another roadblock while trying to use my TrueNAS system as NFS storage for my <strong>Kubernetes persistent volume claims (PVCs)</strong>. This issue surfaced when I tried to deploy <strong>PostgreSQL</strong> in my cluster. PostgreSQL requires permission to modify its data directory by performing <code>chmod</code> or <code>chown</code> on the mounted volumes.</p>
+<p>With TrueNAS, you can’t easily configure the NFS server to allow this. Normally, I would edit the <code>/etc/exports</code> file and add <code>no_root_squash</code>, which would grant the necessary permissions. However, there seems to be no way around this in TrueNAS. This means that I couldn’t mount my PVC from TrueNAS to the PostgreSQL pod, resulting in an error.</p>
+<hr>
+<h2 id="the-workaround-or-lack-thereof">The Workaround (or Lack Thereof)<a href="#the-workaround-or-lack-thereof" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>While TrueNAS does offer PostgreSQL as an app, that solution doesn’t fit my needs. I’m looking for a <strong>Kubernetes-native</strong> deployment, where I can configure ingress, egress, and ensure that all my apps are running as pods within the cluster. Running PostgreSQL as a Docker container in TrueNAS isn’t the same as managing it through Kubernetes, where I have more control.</p>
+<p>I could set up separate storage for my PostgreSQL pod, but that doesn’t solve the core issue: TrueNAS’s rigid approach doesn’t align with my goal of using Kubernetes for everything.</p>
+<hr>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>At the end of the day, TrueNAS is a great system for basic storage management, but when it comes to advanced use cases like Kubernetes, it falls short. If you&rsquo;re looking to run a more flexible, fully managed Kubernetes cluster, you might want to consider alternatives for persistent storage. For me, it’s back to the drawing board for the storage solution. But if you have any suggestions, I’m all ears.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="/posts/printerday/">
+                <span class="button__text">3d Printer DAY!!</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/mirus-ua/hugo-theme-re-terminal" target="_blank">Theme</a> made by <a href="https://github.com/mirus-ua" target="_blank">Mirus</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Tdebian</title>
+    <link>/tags/hardware/</link>
+    <description>Recent content in Hardware on Tdebian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building My First Kubernetes Node</title>
+      <link>/posts/firstnode/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/firstnode/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Building a home Kubernetes lab from scratch is no small feat, especially when you’re working with limited resources. I started with the &lt;strong&gt;ZimaBlade&lt;/strong&gt;, a compact single-board server, which I initially intended to use as a cheap NAS. But as I dove deeper into Kubernetes, I realized this little machine had potential beyond just storage.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hardware-the-zimablade&#34;&gt;Hardware: The ZimaBlade&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;ZimaBlade&lt;/strong&gt; is a single-board server that originally seemed perfect for building a budget NAS. However, after losing an &lt;strong&gt;8TB HDD&lt;/strong&gt; to a hardware failure, I decided to pivot and turn this little machine into a Kubernetes node.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Building a home Kubernetes lab from scratch is no small feat, especially when you’re working with limited resources. I started with the &lt;strong&gt;ZimaBlade&lt;/strong&gt;, a compact single-board server, which I initially intended to use as a cheap NAS. But as I dove deeper into Kubernetes, I realized this little machine had potential beyond just storage.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hardware-the-zimablade&#34;&gt;Hardware: The ZimaBlade&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;ZimaBlade&lt;/strong&gt; is a single-board server that originally seemed perfect for building a budget NAS. However, after losing an &lt;strong&gt;8TB HDD&lt;/strong&gt; to a hardware failure, I decided to pivot and turn this little machine into a Kubernetes node.&lt;/p&gt;
+&lt;p&gt;With 16GB of DDR3 RAM, the ZimaBlade is surprisingly capable of running &lt;strong&gt;K3s&lt;/strong&gt;, a lightweight Kubernetes distribution. It may not have the power for multiple HDDs, but it’s perfectly suited to my needs as a Kubernetes node.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;operating-system-debian-over-casaos&#34;&gt;Operating System: Debian Over CasaOS&lt;/h2&gt;
+&lt;p&gt;The pre-installed &lt;strong&gt;CasaOS&lt;/strong&gt; on the ZimaBlade is not great for running Kubernetes. While it&amp;rsquo;s fine for basic Docker apps, it lacks the flexibility needed for Kubernetes management. On top of that, it locks down package managers and certain sudo commands, which was a dealbreaker for me.&lt;/p&gt;
+&lt;p&gt;I wiped CasaOS and installed &lt;strong&gt;Debian&lt;/strong&gt;—the distribution that suits me best for running K3s. The main reason for choosing Debian over alternatives like Ubuntu or Arch was purely aesthetic—Debian just sounded better to me, and it matched my domain name. If I’m being honest, &lt;strong&gt;Ubuntu&lt;/strong&gt; might have been a better choice for ease of use, especially if you&amp;rsquo;re just starting out.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kubernetes-setup-k3s&#34;&gt;Kubernetes Setup: K3s&lt;/h2&gt;
+&lt;p&gt;When it came to choosing a Kubernetes version, I opted for &lt;strong&gt;K3s&lt;/strong&gt;. My initial attempts with other solutions like &lt;strong&gt;Docker Desktop&lt;/strong&gt; and &lt;strong&gt;Rancher&lt;/strong&gt; didn’t work well because I didn’t understand that load balancers are provided by cloud services and don’t work out of the box on bare metal.&lt;/p&gt;
+&lt;p&gt;I eventually discovered &lt;strong&gt;MetalLB&lt;/strong&gt;, which provides load balancing for K3s clusters on bare metal. This discovery changed everything and was a key factor in why I chose K3s for my home lab.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-nas-setup&#34;&gt;The NAS Setup&lt;/h2&gt;
+&lt;p&gt;My NAS setup is a bit ridiculous—a custom-built case with &lt;strong&gt;RAID 5&lt;/strong&gt; (or &lt;strong&gt;RAID-Z1&lt;/strong&gt;, according to TrueNAS), &lt;strong&gt;4 HDDs&lt;/strong&gt;, and &lt;strong&gt;1TB of PCI SSD&lt;/strong&gt;. I initially had grand plans for 12 HDDs and 7 SSDs, but I’ve scaled back to a more reasonable setup.&lt;/p&gt;
+&lt;p&gt;I’m also running &lt;strong&gt;40GB of DDR4 RAM&lt;/strong&gt; and a graphics card that’s mostly going unused. There’s a ton of underutilized resources, which gives me room to expand the cluster in the future. I plan to create a &lt;strong&gt;Debian VM&lt;/strong&gt; on the NAS and set up a second node for the Kubernetes cluster.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;getting-started-with-k3s&#34;&gt;Getting Started with K3s&lt;/h2&gt;
+&lt;p&gt;Setting up K3s on bare metal wasn’t too hard. The best way to get started is to follow the official &lt;a href=&#34;https://docs.k3s.io/quick-start/&#34;&gt;K3s Quick Start Guide&lt;/a&gt;. One thing I’d note is that some environment variables need to be adjusted, especially when setting up on a home server or custom hardware.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;additional-tools-in-my-setup&#34;&gt;Additional Tools in My Setup&lt;/h2&gt;
+&lt;p&gt;Here are some of the extra tools and technologies I’ve integrated into my home lab:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;K9s&lt;/strong&gt; – For Kubernetes cluster management.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Istio&lt;/strong&gt; – For managing ingress, including multiple subdomains to one IP.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSI-NFS-Driver&lt;/strong&gt; – For managing persistent volumes across the cluster.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NGINX&lt;/strong&gt; – Two full NGINX deployments for load balancing and reverse proxy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pfSense&lt;/strong&gt; – For network management and security.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TrueNAS Scale&lt;/strong&gt; – For my storage solution (though not without its limitations).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hugo&lt;/strong&gt; – For my static site generator.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

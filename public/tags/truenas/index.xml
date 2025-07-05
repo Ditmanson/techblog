@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Truenas on Tdebian</title>
+    <link>/tags/truenas/</link>
+    <description>Recent content in Truenas on Tdebian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/truenas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TrueNAS Scale Limitations</title>
+      <link>/posts/truenasfailure/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/truenasfailure/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Navigating the complexities of TrueNAS Scale can be challenging, especially for someone trying to integrate it with Kubernetes. While TrueNAS comes with helpful guardrails designed to prevent mishaps, they end up hindering flexibility and customization—particularly for users who want to run a full-fledged Kubernetes environment.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-problem-guardrails-vs-flexibility&#34;&gt;The Problem: Guardrails vs Flexibility&lt;/h2&gt;
+&lt;p&gt;As someone who&amp;rsquo;s not an expert in TrueNAS, I’ve spent some time exploring its documentation and architecture. I quickly ran into a major limitation: the rigid ecosystem designed to keep users from breaking things. While these &amp;ldquo;guardrails&amp;rdquo; are helpful for less technical users, they prevent you from utilizing the full range of features you’d expect in a Linux distribution.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Navigating the complexities of TrueNAS Scale can be challenging, especially for someone trying to integrate it with Kubernetes. While TrueNAS comes with helpful guardrails designed to prevent mishaps, they end up hindering flexibility and customization—particularly for users who want to run a full-fledged Kubernetes environment.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-problem-guardrails-vs-flexibility&#34;&gt;The Problem: Guardrails vs Flexibility&lt;/h2&gt;
+&lt;p&gt;As someone who&amp;rsquo;s not an expert in TrueNAS, I’ve spent some time exploring its documentation and architecture. I quickly ran into a major limitation: the rigid ecosystem designed to keep users from breaking things. While these &amp;ldquo;guardrails&amp;rdquo; are helpful for less technical users, they prevent you from utilizing the full range of features you’d expect in a Linux distribution.&lt;/p&gt;
+&lt;p&gt;A prime example is my attempt to install &lt;strong&gt;k3s&lt;/strong&gt; via a package manager. TrueNAS doesn’t allow the use of traditional package managers like APT or YUM. Instead, it forces users to rely on its UI and App Store, which felt restrictive for what I was trying to achieve. I initially shrugged this off as a minor inconvenience, but it was just the beginning of my frustrations.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;a-new-issue-mounting-persistent-volumes&#34;&gt;A New Issue: Mounting Persistent Volumes&lt;/h2&gt;
+&lt;p&gt;Fast forward to today, I encountered another roadblock while trying to use my TrueNAS system as NFS storage for my &lt;strong&gt;Kubernetes persistent volume claims (PVCs)&lt;/strong&gt;. This issue surfaced when I tried to deploy &lt;strong&gt;PostgreSQL&lt;/strong&gt; in my cluster. PostgreSQL requires permission to modify its data directory by performing &lt;code&gt;chmod&lt;/code&gt; or &lt;code&gt;chown&lt;/code&gt; on the mounted volumes.&lt;/p&gt;
+&lt;p&gt;With TrueNAS, you can’t easily configure the NFS server to allow this. Normally, I would edit the &lt;code&gt;/etc/exports&lt;/code&gt; file and add &lt;code&gt;no_root_squash&lt;/code&gt;, which would grant the necessary permissions. However, there seems to be no way around this in TrueNAS. This means that I couldn’t mount my PVC from TrueNAS to the PostgreSQL pod, resulting in an error.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-workaround-or-lack-thereof&#34;&gt;The Workaround (or Lack Thereof)&lt;/h2&gt;
+&lt;p&gt;While TrueNAS does offer PostgreSQL as an app, that solution doesn’t fit my needs. I’m looking for a &lt;strong&gt;Kubernetes-native&lt;/strong&gt; deployment, where I can configure ingress, egress, and ensure that all my apps are running as pods within the cluster. Running PostgreSQL as a Docker container in TrueNAS isn’t the same as managing it through Kubernetes, where I have more control.&lt;/p&gt;
+&lt;p&gt;I could set up separate storage for my PostgreSQL pod, but that doesn’t solve the core issue: TrueNAS’s rigid approach doesn’t align with my goal of using Kubernetes for everything.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;At the end of the day, TrueNAS is a great system for basic storage management, but when it comes to advanced use cases like Kubernetes, it falls short. If you&amp;rsquo;re looking to run a more flexible, fully managed Kubernetes cluster, you might want to consider alternatives for persistent storage. For me, it’s back to the drawing board for the storage solution. But if you have any suggestions, I’m all ears.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

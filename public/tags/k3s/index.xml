@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>K3s on Tdebian</title>
+    <link>/tags/k3s/</link>
+    <description>Recent content in K3s on Tdebian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/k3s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TrueNAS Scale Limitations</title>
+      <link>/posts/truenasfailure/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/truenasfailure/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Navigating the complexities of TrueNAS Scale can be challenging, especially for someone trying to integrate it with Kubernetes. While TrueNAS comes with helpful guardrails designed to prevent mishaps, they end up hindering flexibility and customization—particularly for users who want to run a full-fledged Kubernetes environment.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-problem-guardrails-vs-flexibility&#34;&gt;The Problem: Guardrails vs Flexibility&lt;/h2&gt;
+&lt;p&gt;As someone who&amp;rsquo;s not an expert in TrueNAS, I’ve spent some time exploring its documentation and architecture. I quickly ran into a major limitation: the rigid ecosystem designed to keep users from breaking things. While these &amp;ldquo;guardrails&amp;rdquo; are helpful for less technical users, they prevent you from utilizing the full range of features you’d expect in a Linux distribution.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Navigating the complexities of TrueNAS Scale can be challenging, especially for someone trying to integrate it with Kubernetes. While TrueNAS comes with helpful guardrails designed to prevent mishaps, they end up hindering flexibility and customization—particularly for users who want to run a full-fledged Kubernetes environment.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-problem-guardrails-vs-flexibility&#34;&gt;The Problem: Guardrails vs Flexibility&lt;/h2&gt;
+&lt;p&gt;As someone who&amp;rsquo;s not an expert in TrueNAS, I’ve spent some time exploring its documentation and architecture. I quickly ran into a major limitation: the rigid ecosystem designed to keep users from breaking things. While these &amp;ldquo;guardrails&amp;rdquo; are helpful for less technical users, they prevent you from utilizing the full range of features you’d expect in a Linux distribution.&lt;/p&gt;
+&lt;p&gt;A prime example is my attempt to install &lt;strong&gt;k3s&lt;/strong&gt; via a package manager. TrueNAS doesn’t allow the use of traditional package managers like APT or YUM. Instead, it forces users to rely on its UI and App Store, which felt restrictive for what I was trying to achieve. I initially shrugged this off as a minor inconvenience, but it was just the beginning of my frustrations.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;a-new-issue-mounting-persistent-volumes&#34;&gt;A New Issue: Mounting Persistent Volumes&lt;/h2&gt;
+&lt;p&gt;Fast forward to today, I encountered another roadblock while trying to use my TrueNAS system as NFS storage for my &lt;strong&gt;Kubernetes persistent volume claims (PVCs)&lt;/strong&gt;. This issue surfaced when I tried to deploy &lt;strong&gt;PostgreSQL&lt;/strong&gt; in my cluster. PostgreSQL requires permission to modify its data directory by performing &lt;code&gt;chmod&lt;/code&gt; or &lt;code&gt;chown&lt;/code&gt; on the mounted volumes.&lt;/p&gt;
+&lt;p&gt;With TrueNAS, you can’t easily configure the NFS server to allow this. Normally, I would edit the &lt;code&gt;/etc/exports&lt;/code&gt; file and add &lt;code&gt;no_root_squash&lt;/code&gt;, which would grant the necessary permissions. However, there seems to be no way around this in TrueNAS. This means that I couldn’t mount my PVC from TrueNAS to the PostgreSQL pod, resulting in an error.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-workaround-or-lack-thereof&#34;&gt;The Workaround (or Lack Thereof)&lt;/h2&gt;
+&lt;p&gt;While TrueNAS does offer PostgreSQL as an app, that solution doesn’t fit my needs. I’m looking for a &lt;strong&gt;Kubernetes-native&lt;/strong&gt; deployment, where I can configure ingress, egress, and ensure that all my apps are running as pods within the cluster. Running PostgreSQL as a Docker container in TrueNAS isn’t the same as managing it through Kubernetes, where I have more control.&lt;/p&gt;
+&lt;p&gt;I could set up separate storage for my PostgreSQL pod, but that doesn’t solve the core issue: TrueNAS’s rigid approach doesn’t align with my goal of using Kubernetes for everything.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;At the end of the day, TrueNAS is a great system for basic storage management, but when it comes to advanced use cases like Kubernetes, it falls short. If you&amp;rsquo;re looking to run a more flexible, fully managed Kubernetes cluster, you might want to consider alternatives for persistent storage. For me, it’s back to the drawing board for the storage solution. But if you have any suggestions, I’m all ears.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Building My First Kubernetes Node</title>
+      <link>/posts/firstnode/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/firstnode/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Building a home Kubernetes lab from scratch is no small feat, especially when you’re working with limited resources. I started with the &lt;strong&gt;ZimaBlade&lt;/strong&gt;, a compact single-board server, which I initially intended to use as a cheap NAS. But as I dove deeper into Kubernetes, I realized this little machine had potential beyond just storage.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hardware-the-zimablade&#34;&gt;Hardware: The ZimaBlade&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;ZimaBlade&lt;/strong&gt; is a single-board server that originally seemed perfect for building a budget NAS. However, after losing an &lt;strong&gt;8TB HDD&lt;/strong&gt; to a hardware failure, I decided to pivot and turn this little machine into a Kubernetes node.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Building a home Kubernetes lab from scratch is no small feat, especially when you’re working with limited resources. I started with the &lt;strong&gt;ZimaBlade&lt;/strong&gt;, a compact single-board server, which I initially intended to use as a cheap NAS. But as I dove deeper into Kubernetes, I realized this little machine had potential beyond just storage.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hardware-the-zimablade&#34;&gt;Hardware: The ZimaBlade&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;ZimaBlade&lt;/strong&gt; is a single-board server that originally seemed perfect for building a budget NAS. However, after losing an &lt;strong&gt;8TB HDD&lt;/strong&gt; to a hardware failure, I decided to pivot and turn this little machine into a Kubernetes node.&lt;/p&gt;
+&lt;p&gt;With 16GB of DDR3 RAM, the ZimaBlade is surprisingly capable of running &lt;strong&gt;K3s&lt;/strong&gt;, a lightweight Kubernetes distribution. It may not have the power for multiple HDDs, but it’s perfectly suited to my needs as a Kubernetes node.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;operating-system-debian-over-casaos&#34;&gt;Operating System: Debian Over CasaOS&lt;/h2&gt;
+&lt;p&gt;The pre-installed &lt;strong&gt;CasaOS&lt;/strong&gt; on the ZimaBlade is not great for running Kubernetes. While it&amp;rsquo;s fine for basic Docker apps, it lacks the flexibility needed for Kubernetes management. On top of that, it locks down package managers and certain sudo commands, which was a dealbreaker for me.&lt;/p&gt;
+&lt;p&gt;I wiped CasaOS and installed &lt;strong&gt;Debian&lt;/strong&gt;—the distribution that suits me best for running K3s. The main reason for choosing Debian over alternatives like Ubuntu or Arch was purely aesthetic—Debian just sounded better to me, and it matched my domain name. If I’m being honest, &lt;strong&gt;Ubuntu&lt;/strong&gt; might have been a better choice for ease of use, especially if you&amp;rsquo;re just starting out.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kubernetes-setup-k3s&#34;&gt;Kubernetes Setup: K3s&lt;/h2&gt;
+&lt;p&gt;When it came to choosing a Kubernetes version, I opted for &lt;strong&gt;K3s&lt;/strong&gt;. My initial attempts with other solutions like &lt;strong&gt;Docker Desktop&lt;/strong&gt; and &lt;strong&gt;Rancher&lt;/strong&gt; didn’t work well because I didn’t understand that load balancers are provided by cloud services and don’t work out of the box on bare metal.&lt;/p&gt;
+&lt;p&gt;I eventually discovered &lt;strong&gt;MetalLB&lt;/strong&gt;, which provides load balancing for K3s clusters on bare metal. This discovery changed everything and was a key factor in why I chose K3s for my home lab.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-nas-setup&#34;&gt;The NAS Setup&lt;/h2&gt;
+&lt;p&gt;My NAS setup is a bit ridiculous—a custom-built case with &lt;strong&gt;RAID 5&lt;/strong&gt; (or &lt;strong&gt;RAID-Z1&lt;/strong&gt;, according to TrueNAS), &lt;strong&gt;4 HDDs&lt;/strong&gt;, and &lt;strong&gt;1TB of PCI SSD&lt;/strong&gt;. I initially had grand plans for 12 HDDs and 7 SSDs, but I’ve scaled back to a more reasonable setup.&lt;/p&gt;
+&lt;p&gt;I’m also running &lt;strong&gt;40GB of DDR4 RAM&lt;/strong&gt; and a graphics card that’s mostly going unused. There’s a ton of underutilized resources, which gives me room to expand the cluster in the future. I plan to create a &lt;strong&gt;Debian VM&lt;/strong&gt; on the NAS and set up a second node for the Kubernetes cluster.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;getting-started-with-k3s&#34;&gt;Getting Started with K3s&lt;/h2&gt;
+&lt;p&gt;Setting up K3s on bare metal wasn’t too hard. The best way to get started is to follow the official &lt;a href=&#34;https://docs.k3s.io/quick-start/&#34;&gt;K3s Quick Start Guide&lt;/a&gt;. One thing I’d note is that some environment variables need to be adjusted, especially when setting up on a home server or custom hardware.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;additional-tools-in-my-setup&#34;&gt;Additional Tools in My Setup&lt;/h2&gt;
+&lt;p&gt;Here are some of the extra tools and technologies I’ve integrated into my home lab:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;K9s&lt;/strong&gt; – For Kubernetes cluster management.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Istio&lt;/strong&gt; – For managing ingress, including multiple subdomains to one IP.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSI-NFS-Driver&lt;/strong&gt; – For managing persistent volumes across the cluster.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NGINX&lt;/strong&gt; – Two full NGINX deployments for load balancing and reverse proxy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pfSense&lt;/strong&gt; – For network management and security.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TrueNAS Scale&lt;/strong&gt; – For my storage solution (though not without its limitations).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hugo&lt;/strong&gt; – For my static site generator.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Ingress</title>
+      <link>/posts/istio/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/istio/</guid>
+      <description>&lt;h1 id=&#34;my-istio-ingress-setup-and-some-lessons-learned&#34;&gt;My Istio Ingress Setup (and Some Lessons Learned)&lt;/h1&gt;
+&lt;p&gt;Ingress in Kubernetes isn’t &lt;em&gt;one-size-fits-all&lt;/em&gt;. There are a dozen different paths you can take, and this is just one of them. I opted for the &lt;a href=&#34;https://istio.io/latest/docs/setup/getting-started/&#34;&gt;Istio sidecar method&lt;/a&gt; and followed the &lt;a href=&#34;https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/&#34;&gt;TLS Gateway instructions&lt;/a&gt; to secure it. Here&amp;rsquo;s what I learned.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The load balancer has its own external IP.&lt;/li&gt;
+&lt;li&gt;You already have deployments with pods and services up and running.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pods-in-play&#34;&gt;Pods in Play&lt;/h2&gt;
+&lt;p&gt;First off, here’s what my Istio and NGINX pods look like:&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;my-istio-ingress-setup-and-some-lessons-learned&#34;&gt;My Istio Ingress Setup (and Some Lessons Learned)&lt;/h1&gt;
+&lt;p&gt;Ingress in Kubernetes isn’t &lt;em&gt;one-size-fits-all&lt;/em&gt;. There are a dozen different paths you can take, and this is just one of them. I opted for the &lt;a href=&#34;https://istio.io/latest/docs/setup/getting-started/&#34;&gt;Istio sidecar method&lt;/a&gt; and followed the &lt;a href=&#34;https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/&#34;&gt;TLS Gateway instructions&lt;/a&gt; to secure it. Here&amp;rsquo;s what I learned.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;The load balancer has its own external IP.&lt;/li&gt;
+&lt;li&gt;You already have deployments with pods and services up and running.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pods-in-play&#34;&gt;Pods in Play&lt;/h2&gt;
+&lt;p&gt;First off, here’s what my Istio and NGINX pods look like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ k get pods -n istio-system -o wide
+NAME                                    READY   STATUS    RESTARTS   AGE   IP           NODE      NOMINATED NODE   READINESS GATES
+istio-ingressgateway-7f7bcf6bb9-kf444   1/1     Running   0          8d    10.42.0.71   tdebian   &amp;lt;none&amp;gt;           &amp;lt;none&amp;gt;
+istiod-85c68488c4-94s9v                 1/1     Running   0          8d    10.42.0.70   tdebian   &amp;lt;none&amp;gt;           &amp;lt;none&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the &lt;code&gt;hugo&lt;/code&gt; namespace, I accidentally created a race condition. I copied a service config and forgot to update one of the labels, which meant both services were routing traffic to both pods. Oops.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ k get all -n hugo
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/nginx-hugo-946ff545b-2mclc    2/2     Running   0          5h21m
+pod/nginx-tech-7449666dd7-d9q9r   2/2     Running   0          5h20m
+
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+service/nginx-svc-hugo   ClusterIP   10.43.213.158   &amp;lt;none&amp;gt;        80/TCP    5h21m
+service/nginx-svc-tech   ClusterIP   10.43.88.164    &amp;lt;none&amp;gt;        80/TCP    5h20m
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-hugo   1/1     1            1           5h21m
+deployment.apps/nginx-tech   1/1     1            1           5h20m
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tls-secrets-gotcha&#34;&gt;TLS Secrets Gotcha&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a catch I ran into with TLS: the secrets &lt;em&gt;must&lt;/em&gt; go in the &lt;code&gt;istio-system&lt;/code&gt; namespace, not alongside your deployments.&lt;/p&gt;
+&lt;p&gt;I originally placed them in the same namespace as my apps, thinking that since the gateway referenced them, they’d work. But nope — no TLS until they were in &lt;code&gt;istio-system&lt;/code&gt;. That’s probably because it’s the &lt;code&gt;istio-ingressgateway&lt;/code&gt; pod that actually uses them.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ k get secret -n istio-system
+NAME               TYPE                DATA   AGE
+istio-ca-secret    istio.io/ca-root    5      8d
+tblog-credential   kubernetes.io/tls   2      7h3m
+tech-credential    kubernetes.io/tls   2      7h1m
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;🔒 I’m using self-signed certs for now, so the browser still shows the site as unsafe.&lt;br&gt;
+&lt;strong&gt;TODO&lt;/strong&gt;: Switch to cert-manager or upload proper certificates.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;gateway-config&#34;&gt;Gateway Config&lt;/h2&gt;
+&lt;p&gt;I started with the Istio example and tweaked it from there — port numbers, hosts, credentials, etc. This version routes based on hostname and supports both HTTP and HTTPS.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;apiVersion&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;networking.istio.io/v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;kind&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Gateway&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;nginx-gateway&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;namespace&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;selector&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;istio&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ingressgateway&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;servers&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;port&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;number&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;https-tblog&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;protocol&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;HTTPS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;tls&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;SIMPLE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;credentialName&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;tblog-credential&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;hosts&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tblog.tdebian.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;port&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;number&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;https-tech&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;protocol&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;HTTPS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;tls&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;mode&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;SIMPLE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;credentialName&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;tech-credential&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;hosts&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tech.tdebian.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;port&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;number&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;http-tblog&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;protocol&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;HTTP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;hosts&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tblog.tdebian.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;port&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;number&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;http-tech&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;protocol&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;HTTP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;hosts&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tech.tdebian.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;❓ &lt;strong&gt;TODO&lt;/strong&gt;: Look into other TLS modes like &lt;code&gt;MUTUAL&lt;/code&gt; and &lt;code&gt;PASSTHROUGH&lt;/code&gt; and when you&amp;rsquo;d want to use them.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;virtualservice&#34;&gt;VirtualService&lt;/h2&gt;
+&lt;p&gt;For my &lt;code&gt;VirtualService&lt;/code&gt;, I eventually simplified things. At first, I thought I could use shorthand for the &lt;code&gt;host&lt;/code&gt;, but it didn’t work for me. I had to use the full FQDN (&lt;code&gt;.svc.cluster.local&lt;/code&gt;) to get traffic routed properly.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;apiVersion&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;networking.istio.io/v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;kind&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;VirtualService&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;tblogtdebian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;namespace&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;hugo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;spec&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;hosts&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tblog.tdebian.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;gateways&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#ae81ff&#34;&gt;nginx-gateway&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;http&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;route&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#f92672&#34;&gt;destination&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;host&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;nginx-svc-hugo.hugo.svc.cluster.local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Ingress :: Tdebian</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A summary of my ingress set-up" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/istio/" />
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="/img/theme-colors/blue.png">
+  <link rel="apple-touch-icon" href="/img/theme-colors/blue.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ingress">
+<meta property="og:description" content="A summary of my ingress set-up" />
+<meta property="og:url" content="/posts/istio/" />
+<meta property="og:site_name" content="Tdebian" />
+
+  
+    <meta property="og:image" content="/img/favicon/blue.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-05-26 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+</head>
+<body class="blue">
+
+
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Tdebian
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/manifests">Manifests</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/scripts">Scripts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+      
+        
+          <li><a href="/manifests" >Manifests</a></li>
+        
+      
+        
+          <li><a href="/posts" >Posts</a></li>
+        
+      
+        
+          <li><a href="/scripts" >Scripts</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/istio/">Ingress</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-05-26</time>
+    
+</div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="/tags/k8s/">k8s</a>&nbsp;
+      
+      #<a href="/tags/k3s/">k3s</a>&nbsp;
+      
+      #<a href="/tags/ingress/">ingress</a>&nbsp;
+      
+      #<a href="/tags/istio/">istio</a>&nbsp;
+      
+      #<a href="/tags/nginx/">nginx</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="my-istio-ingress-setup-and-some-lessons-learned">My Istio Ingress Setup (and Some Lessons Learned)<a href="#my-istio-ingress-setup-and-some-lessons-learned" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Ingress in Kubernetes isn’t <em>one-size-fits-all</em>. There are a dozen different paths you can take, and this is just one of them. I opted for the <a href="https://istio.io/latest/docs/setup/getting-started/">Istio sidecar method</a> and followed the <a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/">TLS Gateway instructions</a> to secure it. Here&rsquo;s what I learned.</p>
+<hr>
+<h2 id="assumptions">Assumptions<a href="#assumptions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ol>
+<li>The load balancer has its own external IP.</li>
+<li>You already have deployments with pods and services up and running.</li>
+</ol>
+<hr>
+<h2 id="pods-in-play">Pods in Play<a href="#pods-in-play" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>First off, here’s what my Istio and NGINX pods look like:</p>
+<pre><code>$ k get pods -n istio-system -o wide
+NAME                                    READY   STATUS    RESTARTS   AGE   IP           NODE      NOMINATED NODE   READINESS GATES
+istio-ingressgateway-7f7bcf6bb9-kf444   1/1     Running   0          8d    10.42.0.71   tdebian   &lt;none&gt;           &lt;none&gt;
+istiod-85c68488c4-94s9v                 1/1     Running   0          8d    10.42.0.70   tdebian   &lt;none&gt;           &lt;none&gt;
+</code></pre>
+<p>In the <code>hugo</code> namespace, I accidentally created a race condition. I copied a service config and forgot to update one of the labels, which meant both services were routing traffic to both pods. Oops.</p>
+<pre><code>$ k get all -n hugo
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/nginx-hugo-946ff545b-2mclc    2/2     Running   0          5h21m
+pod/nginx-tech-7449666dd7-d9q9r   2/2     Running   0          5h20m
+
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+service/nginx-svc-hugo   ClusterIP   10.43.213.158   &lt;none&gt;        80/TCP    5h21m
+service/nginx-svc-tech   ClusterIP   10.43.88.164    &lt;none&gt;        80/TCP    5h20m
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-hugo   1/1     1            1           5h21m
+deployment.apps/nginx-tech   1/1     1            1           5h20m
+</code></pre>
+<hr>
+<h2 id="tls-secrets-gotcha">TLS Secrets Gotcha<a href="#tls-secrets-gotcha" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Here&rsquo;s a catch I ran into with TLS: the secrets <em>must</em> go in the <code>istio-system</code> namespace, not alongside your deployments.</p>
+<p>I originally placed them in the same namespace as my apps, thinking that since the gateway referenced them, they’d work. But nope — no TLS until they were in <code>istio-system</code>. That’s probably because it’s the <code>istio-ingressgateway</code> pod that actually uses them.</p>
+<pre><code>$ k get secret -n istio-system
+NAME               TYPE                DATA   AGE
+istio-ca-secret    istio.io/ca-root    5      8d
+tblog-credential   kubernetes.io/tls   2      7h3m
+tech-credential    kubernetes.io/tls   2      7h1m
+</code></pre>
+<p>🔒 I’m using self-signed certs for now, so the browser still shows the site as unsafe.<br>
+<strong>TODO</strong>: Switch to cert-manager or upload proper certificates.</p>
+<hr>
+<h2 id="gateway-config">Gateway Config<a href="#gateway-config" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>I started with the Istio example and tweaked it from there — port numbers, hosts, credentials, etc. This version routes based on hostname and supports both HTTP and HTTPS.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.istio.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Gateway</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nginx-gateway</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">hugo</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">istio</span>: <span style="color:#ae81ff">ingressgateway</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">servers</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">port</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">number</span>: <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">https-tblog</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">HTTPS</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">mode</span>: <span style="color:#ae81ff">SIMPLE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">credentialName</span>: <span style="color:#ae81ff">tblog-credential</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;tblog.tdebian.com&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">port</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">number</span>: <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">https-tech</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">HTTPS</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">tls</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">mode</span>: <span style="color:#ae81ff">SIMPLE</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">credentialName</span>: <span style="color:#ae81ff">tech-credential</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;tech.tdebian.com&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">port</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">number</span>: <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http-tblog</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">HTTP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;tblog.tdebian.com&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">port</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">number</span>: <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http-tech</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">HTTP</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#e6db74">&#34;tech.tdebian.com&#34;</span>
+</span></span></code></pre></div><p>❓ <strong>TODO</strong>: Look into other TLS modes like <code>MUTUAL</code> and <code>PASSTHROUGH</code> and when you&rsquo;d want to use them.</p>
+<hr>
+<h2 id="virtualservice">VirtualService<a href="#virtualservice" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>For my <code>VirtualService</code>, I eventually simplified things. At first, I thought I could use shorthand for the <code>host</code>, but it didn’t work for me. I had to use the full FQDN (<code>.svc.cluster.local</code>) to get traffic routed properly.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.istio.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">VirtualService</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tblogtdebian</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">hugo</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hosts</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;tblog.tdebian.com&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">gateways</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">nginx-gateway</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">http</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">route</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">destination</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>: <span style="color:#ae81ff">nginx-svc-hugo.hugo.svc.cluster.local</span>
+</span></span></code></pre></div>
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="/posts/firstnode/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Building My First Kubernetes Node</span>
+            </a>
+        </span>
+        
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/mirus-ua/hugo-theme-re-terminal" target="_blank">Theme</a> made by <a href="https://github.com/mirus-ua" target="_blank">Mirus</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
