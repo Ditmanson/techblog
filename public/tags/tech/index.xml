@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tech on Tdebian</title>
-    <link>/tags/tech/</link>
+    <link>//localhost:1313/tags/tech/</link>
     <description>Recent content in Tech on Tdebian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 10 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scripts</title>
-      <link>/scripts/scripts/</link>
+      <link>//localhost:1313/scripts/scripts/</link>
       <pubDate>Sat, 10 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>/scripts/scripts/</guid>
+      <guid>//localhost:1313/scripts/scripts/</guid>
       <description>&lt;p&gt;Dealing with the dynamic dns from the internet provider. I set this script up on a crontab to run at midnight.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# pb.sh&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash&lt;/span&gt;
@@ -129,10 +129,10 @@
     
     <item>
       <title>WebServer</title>
-      <link>/manifests/nginx/</link>
+      <link>//localhost:1313/manifests/nginx/</link>
       <pubDate>Sat, 10 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>/manifests/nginx/</guid>
+      <guid>//localhost:1313/manifests/nginx/</guid>
       <description>&lt;p&gt;Not much to show here, but here&amp;rsquo;s my nginx pod. I&amp;rsquo;ll switch this to a deployment after I get a second node up and running&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;apiVersion&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;v1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;kind&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Pod&lt;/span&gt;

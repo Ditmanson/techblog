@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Tech Stack :: Tdebian</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="My Tech Stack Nov 2025" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="//localhost:1313/posts/techstack/" />
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="//localhost:1313/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="//localhost:1313/img/theme-colors/blue.png">
+  <link rel="apple-touch-icon" href="//localhost:1313/img/theme-colors/blue.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Tech Stack">
+<meta property="og:description" content="My Tech Stack Nov 2025" />
+<meta property="og:url" content="//localhost:1313/posts/techstack/" />
+<meta property="og:site_name" content="Tdebian" />
+
+  
+    <meta property="og:image" content="//localhost:1313/img/favicon/blue.png">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-11-15 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+</head>
+<body class="blue">
+
+
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Tdebian
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/manifests">Manifests</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/scripts">Scripts</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+      
+        
+          <li><a href="/manifests" >Manifests</a></li>
+        
+      
+        
+          <li><a href="/posts" >Posts</a></li>
+        
+      
+        
+          <li><a href="/scripts" >Scripts</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/techstack/">Tech Stack</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-11-15</time>
+    
+</div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="//localhost:1313/tags/k8s/">k8s</a>&nbsp;
+      
+      #<a href="//localhost:1313/tags/linux/">linux</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="techstack">Techstack<a href="#techstack" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<h2 id="os">OS<a href="#os" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ul>
+<li>omarchy</li>
+<li><a href="http://omarchy.org/">http://omarchy.org/</a></li>
+</ul>
+<p>It feels different than a debian or ubuntu distro on the fact that it&rsquo;s super vim focused. It comes equipped with <a href="https://wiki.archlinux.org/title/Hyprland">hyperland</a>, and a preconfigured arch setup. There&rsquo;s no complicated set-up and bluetooth/wifi work out of the box. It has a bunch of pre-configured software installed, some of it needs changing and some I&rsquo;m still checking out.</p>
+<hr>
+<h4 id="omarchy-os">Omarchy OS<a href="#omarchy-os" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>The keybindings are pretty sick, and easy to change in the $HOME/.config/hypr/bindings.conf. The software is pretty opinionated, but we can change the ones we don&rsquo;t like. The default password manager is 1password, which we currently use. I&rsquo;m planning to swap over to selfhosted just haven&rsquo;t goettn around to it. The browser installed is some sort of stripped down chromium, there&rsquo;s stuff in the config files about brave so maybe it&rsquo;s related. I took that out and installed qute browser instead. Neovim is the default code editor. I&rsquo;m used to plain old vim that comes with every dnf install; however, I&rsquo;m giving it a try. The Neovim distro, if that&rsquo;s what we call it, is lazyvim. My first impressions is, I mostly hate it. But I think that&rsquo;s just cause I haven&rsquo;t figured out how to turn off all the extra garbage. Spotify is pre-installed which is what I use; but again, you can swap out the hyperland shortcuts, so if you want to switch it up, it&rsquo;s super easy.</p>
+<h4 id="qutebrowser">Qutebrowser<a href="#qutebrowser" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p><a href="https://qutebrowser.org/">Qutebrowser</a> is super sick as far as browser&rsquo;s go. It&rsquo;s open source python browser. You can call it from the command line. You can edit the configs from a vim like command. There&rsquo;s a basic pi-hole style ad-blocker. You can update the links with a command, adblock-update. They have all the code opensource so you know they aren&rsquo;t sending your info back to google or mozilla or anyone else. The keybindings takes some getting used to; <strong>BUT</strong> they are sweet, check them out <a href="#ZgotmplZ">here</a>. You can&rsquo;t add plugins, so there&rsquo;s not a good way of blocking youtube adds. I saw a cool way around that on <a href="https://www.youtube.com/watch?v=rMYMfnOpxP0&amp;t=392s">distrotube</a> .You open the youtube links with MPV. To name things easier, in the .config/qutebrowser/config.py you can add this line <code>config.bind('M', 'hint links spawn mpv {hint-url}')</code></p>
+<h4 id="nvim">Nvim<a href="#nvim" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>I&rsquo;m still getting used to lazyvim. I need to turn a bunch of this stuff off. Things like the distracting autocomplete suggestions. Don&rsquo;t like that. I&rsquo;m used to the commands being at the bottom, the command box seems like a bit much for vim, if you ask me. If you accidently open it in a directory, it looks nicer than netrw;however, I don&rsquo;t know how to make it dispear. I kind of feel like if you think you need a code tree open all the time, then maybe you belong on vscode. But it&rsquo;s not all bad. Omarchy has built in theme changing, which changes the color and look of the desktop, terminal, and nvim editor. That&rsquo;s pretty sweet. I think that&rsquo;s the only reason I haven&rsquo;t switched back yet. All the keybindings are <a href="https://www.lazyvim.org/keymaps">here</a>. So far they have mostly disapointed me, probably because I&rsquo;m not used to them. But the only one I wanted to try was the markdown-preview <!-- raw HTML omitted -->cp . However, apparently that plugin didn&rsquo;t make the cut. So I&rsquo;ll have to figure out the plugin manager.</p>
+<h4 id="kubernetes">Kubernetes<a href="#kubernetes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>I&rsquo;ve got 2 nodes running off <a href="https://docs.k3s.io/">k3s</a>. I don&rsquo;t use any cloud software. Everything is set up on <a href="https://metallb.io/">metallb</a>. One thing to note, if you want to copy me you&rsquo;ll need to disable k3s default loadbalancer, see <a href="https://metallb.io/configuration/k3s/">here</a>. You can do it when you bring up your first node, but if you don&rsquo;t. Then just add <code>ExecStart=/usr/local/bin/k3s server --disable servicelb \</code> to the end of /etc/systemd/system/k3s.service.</p>
+<p>For ingress I&rsquo;m using istio for public routing. Private routing is done through metallb loadbalancers. Since I have 2 nodes, I need shared disk storage. For that I use <a href="https://github.com/kubernetes-csi/csi-driver-nfs">nfs-csi-driver</a>. It&rsquo;s a bit tricky to set up the nfs kernel on the arch system, see <a href="https://wiki.archlinux.org/title/NFS">here</a>. The big change from all the debian instructions is restarting your nfs server is you need to use <a href="https://www.linuxfromscratch.org/blfs/view/cvs/basicnet/nfs-utils.html">nfs-utils</a>. I ended up just feeding a chat bot the debain docs and asket it to translate it to arch. It fixed it up for me.</p>
+<p>Using nginx to host Webpage from a hugo site.</p>
+<p>I have cnpg and pgadmin hooked up and routed on the private network. The work I did on them got erased, but it wasn&rsquo;t much anyways. I&rsquo;ve decided I&rsquo;m going to learn fast api instead of learning sql. So nothing&rsquo;s really lost.</p>
+<p>Speaking of losing things. Thankfully I keep all my manifests in <a href="https://argo-cd.readthedocs.io/en/stable/">ArgoCD</a>. Bringing up a cluster from scartch only required kicking the cnpg operator when I needed to redownload the crd&rsquo;s. You can grab my <a href="https://github.com/Ditmanson/argocluster">manifests</a> <a href="https://github.com/Ditmanson/argobase">bootstrap app</a> if you want. Probably the next app is going to be a fastapi app.</p>
+<h4 id="router">Router<a href="#router" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Speaking of losing everything. The reason I lost everything, is when the power went out my IP&rsquo;s all changed. While trying to fix it, I ended up getting my cluster stuck to a low ip address and I somehow locked it. I didn&rsquo;t have much to lose, so I uninstalled and reinstalled, but before that; I configured static ip&rsquo;s on my pfsense router. PFsense is a pretty cool little hobby project if you want to learn network stuff. I used it for <a href="https://www.snort.org/documents">snort</a> and I used to configure network wide vpn&rsquo;s with openvpn. However, coding network vpn&rsquo;s are a bit static, and I like switching every device to a different IP every day, so we use it on each device now. For VPN&rsquo;s we switch between a few, but we always stick wtih something from Europe since they have the GDPR.</p>
+<h4 id="other">OTHER<a href="#other" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<ul>
+<li><a href="https://www.zsa.io/voyager">keyboard voyager</a> Pretty much the sickest keyboard. If bluetooth is important then you need something zmk flashed running with a bluetooth chip. If you go wired, you get <a href="https://configure.zsa.io/voyager/layouts/default/latest/0/intro">qmk</a> which means you can configure with zsa. Which is what makes them so sweet.</li>
+<li><a href="https://duckduckgo.com/?q=bambu&#43;printer&amp;ia=web">Bambu 3D Printer</a></li>
+<li><a href="https://wiki.archlinux.org/title/RAID">NAS</a></li>
+<li><a href="https://gohugo.io/">Static Site Generater</a>, This thing&rsquo;s pretty sweet for making quick websites with markdown</li>
+</ul>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="//localhost:1313/posts/flowcharttest/">
+                <span class="button__text">Mermaid</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/mirus-ua/hugo-theme-re-terminal" target="_blank">Theme</a> made by <a href="https://github.com/mirus-ua" target="_blank">Mirus</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

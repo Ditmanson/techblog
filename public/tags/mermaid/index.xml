@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mermaid on Tdebian</title>
+    <link>//localhost:1313/tags/mermaid/</link>
+    <description>Recent content in Mermaid on Tdebian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 22 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/mermaid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mermaid</title>
+      <link>//localhost:1313/posts/flowcharttest/</link>
+      <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/flowcharttest/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;mermaid-diagram-attempt&#34;&gt;Mermaid Diagram attempt&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Ditmanson/techblog/blob/main/content/posts/flowcharttest.md&#34;&gt;My flowcharts&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+  A --&amp;gt; B --&amp;gt; C
+&lt;/code&gt;&lt;/pre&gt;</description>
+      <content>&lt;hr&gt;
+&lt;h1 id=&#34;mermaid-diagram-attempt&#34;&gt;Mermaid Diagram attempt&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Ditmanson/techblog/blob/main/content/posts/flowcharttest.md&#34;&gt;My flowcharts&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;flowchart LR
+  A --&amp;gt; B --&amp;gt; C
+&lt;/code&gt;&lt;/pre&gt;</content>
+    </item>
+    
+  </channel>
+</rss>

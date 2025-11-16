@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Argocd on Tdebian</title>
-    <link>/tags/argocd/</link>
+    <link>//localhost:1313/tags/argocd/</link>
     <description>Recent content in Argocd on Tdebian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/argocd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/argocd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>3d Printer DAY!!</title>
-      <link>/posts/printerday/</link>
+      <link>//localhost:1313/posts/printerday/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
       
-      <guid>/posts/printerday/</guid>
+      <guid>//localhost:1313/posts/printerday/</guid>
       <description>&lt;h1 id=&#34;first-prints-with-the-bambu-lab-a1--ams&#34;&gt;First Prints with the Bambu Lab A1 + AMS&lt;/h1&gt;
 &lt;p&gt;I recently picked up the &lt;strong&gt;A1 Lab and AMS&lt;/strong&gt; by Bambu Lab, and I have to say—this printer is fantastic. It worked right out of the box. After walking through the quick-start guide, I was ready to go. My first project? Printing some little toy octopuses for my son, Cassius.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/printer/castle.JPG&#34; alt=&#34;cass’s castle image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/printer/castle.JPG&#34; alt=&#34;cass’s castle image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;What impressed me most was the simplicity. I connected to the printer using the &lt;strong&gt;Bambu Handy&lt;/strong&gt; app, tapped a few buttons, and had prints running almost immediately. For the first few jobs, I used the default models and settings right from the app.&lt;/p&gt;</description>
       <content>&lt;h1 id=&#34;first-prints-with-the-bambu-lab-a1--ams&#34;&gt;First Prints with the Bambu Lab A1 + AMS&lt;/h1&gt;
 &lt;p&gt;I recently picked up the &lt;strong&gt;A1 Lab and AMS&lt;/strong&gt; by Bambu Lab, and I have to say—this printer is fantastic. It worked right out of the box. After walking through the quick-start guide, I was ready to go. My first project? Printing some little toy octopuses for my son, Cassius.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/printer/castle.JPG&#34; alt=&#34;cass’s castle image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/printer/castle.JPG&#34; alt=&#34;cass’s castle image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;What impressed me most was the simplicity. I connected to the printer using the &lt;strong&gt;Bambu Handy&lt;/strong&gt; app, tapped a few buttons, and had prints running almost immediately. For the first few jobs, I used the default models and settings right from the app.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;taking-it-further-with-bambu-studio&#34;&gt;Taking It Further with Bambu Studio&lt;/h2&gt;
@@ -30,19 +30,19 @@
 I wanted to print my own holds for my &lt;a href=&#34;https://tblog.tdebian.com/posts/theshed/&#34;&gt;DIY climbing wall&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Climbing holds are expensive. A basic pack of 12 costs over $50, and I needed way more than that. A friend printed a sample hold for me, and it held up surprisingly well. That convinced me to try it for myself.&lt;/p&gt;
 &lt;p&gt;Here are some basic holds I printed right from my phone:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/printer/cholds.jpg&#34; alt=&#34;climbing hold image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/printer/cholds.jpg&#34; alt=&#34;climbing hold image&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;troubleshooting-bad-prints&#34;&gt;Troubleshooting Bad Prints&lt;/h2&gt;
 &lt;p&gt;Not everything went smoothly. After a few successful jobs, prints started failing.&lt;/p&gt;
 &lt;p&gt;Here’s one example of a botched key holder:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/printer/khold.jpg&#34; alt=&#34;key holder image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/printer/khold.jpg&#34; alt=&#34;key holder image&#34;&gt;&lt;/p&gt;
 &lt;p&gt;It took me a while to figure out the problem, but it turned out to be two things:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Humidity&lt;/strong&gt; — my filament was absorbing moisture.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;A dirty build plate&lt;/strong&gt; — adhesion was inconsistent.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Once I dried out the filament and cleaned the build surface, my prints were back to normal.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/printer/headphone.JPG&#34; alt=&#34;headphone image&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/printer/headphone.JPG&#34; alt=&#34;headphone image&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;whats-next&#34;&gt;What’s Next&lt;/h2&gt;
 &lt;p&gt;I’m planning to dive into &lt;strong&gt;FreeCAD&lt;/strong&gt; to start designing my own climbing holds and parts. I’m also really intrigued by the &lt;strong&gt;Gridfinity&lt;/strong&gt; storage system. My goal is to start designing modular storage and wall features—combining Gridfinity with climbing hardware.&lt;/p&gt;
@@ -54,10 +54,10 @@ I wanted to print my own holds for my &lt;a href=&#34;https://tblog.tdebian.com/
     
     <item>
       <title>ArgoCD</title>
-      <link>/posts/argocd/</link>
+      <link>//localhost:1313/posts/argocd/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
       
-      <guid>/posts/argocd/</guid>
+      <guid>//localhost:1313/posts/argocd/</guid>
       <description>&lt;h1 id=&#34;bringing-up-argocd&#34;&gt;Bringing Up ArgoCD&lt;/h1&gt;
 &lt;h2 id=&#34;day-one-with-argo&#34;&gt;Day One with Argo&lt;/h2&gt;
 &lt;p&gt;Today I finally got ArgoCD up and running on my home cluster. I&amp;rsquo;m mostly following the &lt;a href=&#34;https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/&#34;&gt;official docs&lt;/a&gt;, but as with most things in self-hosted Kubernetes, there were a few snags worth documenting.&lt;/p&gt;
@@ -107,9 +107,9 @@ I wanted to print my own holds for my &lt;a href=&#34;https://tblog.tdebian.com/
 &lt;hr&gt;
 &lt;h2 id=&#34;bonus-argocd-views&#34;&gt;Bonus: ArgoCD Views&lt;/h2&gt;
 &lt;p&gt;Here’s what it looks like in the ArgoCD UI:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/argocd/argocdapplications.png&#34; alt=&#34;Argo Applications&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/argocd/argocdapplications.png&#34; alt=&#34;Argo Applications&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I wish I had seen a diagram like this when I was struggling with Istio ingress. It’s not only useful—it also looks cool.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/argocd/argonetwork.png&#34; alt=&#34;Argo Network&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/argocd/argonetwork.png&#34; alt=&#34;Argo Network&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;That’s it for day one with Argo. Next step: onboard more namespaces, polish up my repo structure, and figure out what belongs in Argo versus what gets handled upstream by Helm or Kustomize.&lt;/p&gt;
 </content>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nginx on Tdebian</title>
-    <link>/tags/nginx/</link>
+    <link>//localhost:1313/tags/nginx/</link>
     <description>Recent content in Nginx on Tdebian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ingress</title>
-      <link>/posts/istio/</link>
+      <link>//localhost:1313/posts/istio/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>/posts/istio/</guid>
+      <guid>//localhost:1313/posts/istio/</guid>
       <description>&lt;h1 id=&#34;my-istio-ingress-setup-and-some-lessons-learned&#34;&gt;My Istio Ingress Setup (and Some Lessons Learned)&lt;/h1&gt;
 &lt;p&gt;Ingress in Kubernetes isn’t &lt;em&gt;one-size-fits-all&lt;/em&gt;. There are a dozen different paths you can take, and this is just one of them. I opted for the &lt;a href=&#34;https://istio.io/latest/docs/setup/getting-started/&#34;&gt;Istio sidecar method&lt;/a&gt; and followed the &lt;a href=&#34;https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/&#34;&gt;TLS Gateway instructions&lt;/a&gt; to secure it. Here&amp;rsquo;s what I learned.&lt;/p&gt;
 &lt;hr&gt;
@@ -131,10 +131,10 @@ tech-credential    kubernetes.io/tls   2      7h1m
     
     <item>
       <title>WebServer</title>
-      <link>/manifests/nginx/</link>
+      <link>//localhost:1313/manifests/nginx/</link>
       <pubDate>Sat, 10 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>/manifests/nginx/</guid>
+      <guid>//localhost:1313/manifests/nginx/</guid>
       <description>&lt;p&gt;Not much to show here, but here&amp;rsquo;s my nginx pod. I&amp;rsquo;ll switch this to a deployment after I get a second node up and running&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;apiVersion&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;v1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;kind&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Pod&lt;/span&gt;

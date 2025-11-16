@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ingress on Tdebian</title>
-    <link>/tags/ingress/</link>
+    <link>//localhost:1313/tags/ingress/</link>
     <description>Recent content in Ingress on Tdebian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ingress</title>
-      <link>/posts/istio/</link>
+      <link>//localhost:1313/posts/istio/</link>
       <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>/posts/istio/</guid>
+      <guid>//localhost:1313/posts/istio/</guid>
       <description>&lt;h1 id=&#34;my-istio-ingress-setup-and-some-lessons-learned&#34;&gt;My Istio Ingress Setup (and Some Lessons Learned)&lt;/h1&gt;
 &lt;p&gt;Ingress in Kubernetes isn’t &lt;em&gt;one-size-fits-all&lt;/em&gt;. There are a dozen different paths you can take, and this is just one of them. I opted for the &lt;a href=&#34;https://istio.io/latest/docs/setup/getting-started/&#34;&gt;Istio sidecar method&lt;/a&gt; and followed the &lt;a href=&#34;https://istio.io/latest/docs/tasks/traffic-management/ingress/secure-ingress/&#34;&gt;TLS Gateway instructions&lt;/a&gt; to secure it. Here&amp;rsquo;s what I learned.&lt;/p&gt;
 &lt;hr&gt;
@@ -127,6 +127,17 @@ tech-credential    kubernetes.io/tls   2      7h1m
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - &lt;span style=&#34;color:#f92672&#34;&gt;destination&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;host&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;nginx-svc-hugo.hugo.svc.cluster.local&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    </item>
+    
+    <item>
+      <title>Ingress</title>
+      <link>//localhost:1313/posts/test/</link>
+      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/test/</guid>
+      <description>&lt;p&gt;test&lt;/p&gt;</description>
+      <content>&lt;p&gt;test&lt;/p&gt;
+</content>
     </item>
     
   </channel>

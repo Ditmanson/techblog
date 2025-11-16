@@ -2,96 +2,111 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tags/k3s/</loc>
+    <loc>//localhost:1313/tags/k8s/</loc>
+    <lastmod>2025-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/linux/</loc>
+    <lastmod>2025-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2025-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2025-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2025-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/techstack/</loc>
+    <lastmod>2025-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/k3s/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/k8s/</loc>
+    <loc>//localhost:1313/posts/flowcharttest/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/nas/</loc>
+    <loc>//localhost:1313/tags/mermaid/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>//localhost:1313/tags/nas/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>//localhost:1313/tags/truenas/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>//localhost:1313/posts/truenasfailure/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/truenas/</loc>
-    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/truenasfailure/</loc>
-    <lastmod>2025-06-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/printerday/</loc>
+    <loc>//localhost:1313/posts/printerday/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/3d-printing/</loc>
+    <loc>//localhost:1313/tags/3d-printing/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/argocd/</loc>
+    <loc>//localhost:1313/tags/argocd/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/argocd/</loc>
+    <loc>//localhost:1313/posts/argocd/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/bambu/</loc>
+    <loc>//localhost:1313/tags/bambu/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/diy/</loc>
+    <loc>//localhost:1313/tags/diy/</loc>
     <lastmod>2025-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/firstnode/</loc>
+    <loc>//localhost:1313/posts/firstnode/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/hardware/</loc>
+    <loc>//localhost:1313/tags/hardware/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/istio/</loc>
+    <loc>//localhost:1313/posts/istio/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/ingress/</loc>
+    <loc>//localhost:1313/posts/test/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/istio/</loc>
+    <loc>//localhost:1313/tags/ingress/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/nginx/</loc>
+    <loc>//localhost:1313/tags/istio/</loc>
     <lastmod>2025-05-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/manifests/</loc>
+    <loc>//localhost:1313/tags/nginx/</loc>
+    <lastmod>2025-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/manifests/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/pods/</loc>
+    <loc>//localhost:1313/tags/pods/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/scripts/</loc>
+    <loc>//localhost:1313/scripts/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/scripts/scripts/</loc>
+    <loc>//localhost:1313/scripts/scripts/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/scripts/</loc>
+    <loc>//localhost:1313/tags/scripts/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/tech/</loc>
+    <loc>//localhost:1313/tags/tech/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/manifests/nginx/</loc>
+    <loc>//localhost:1313/manifests/nginx/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/yaml/</loc>
+    <loc>//localhost:1313/tags/yaml/</loc>
     <lastmod>2025-05-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/manifests/metallb-config/</loc>
+    <loc>//localhost:1313/manifests/metallb-config/</loc>
     <lastmod>2025-04-12T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/manifests/nfs/</loc>
+    <loc>//localhost:1313/manifests/nfs/</loc>
     <lastmod>2025-04-12T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>//localhost:1313/categories/</loc>
   </url>
 </urlset>

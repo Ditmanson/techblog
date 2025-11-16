@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
     <title>Load balancer :: Tdebian</title>
   
@@ -12,7 +12,7 @@
 
   <meta name="robots" content="noodp" />
 
-<link rel="canonical" href="/manifests/metallb-config/" />
+<link rel="canonical" href="//localhost:1313/manifests/metallb-config/" />
 
 
 
@@ -25,7 +25,7 @@
   
   
   
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="//localhost:1313/styles.css">
 
 
 
@@ -33,8 +33,8 @@
 
 
 
-  <link rel="shortcut icon" href="/img/theme-colors/blue.png">
-  <link rel="apple-touch-icon" href="/img/theme-colors/blue.png">
+  <link rel="shortcut icon" href="//localhost:1313/img/theme-colors/blue.png">
+  <link rel="apple-touch-icon" href="//localhost:1313/img/theme-colors/blue.png">
 
 
 
@@ -47,11 +47,11 @@
 <meta property="og:title" content="Load balancer">
 <meta property="og:description" content="I wanted to run all my apps off kubernetes instead of the more popular homelab option of docker_compose. The intention is to get better at work; however, most loadbalancers don&rsquo;t work on bare metal. After eventually discovering this I installed metallb and removed the stock loadbalancer form k3s.
 --- apiVersion: metallb.io/v1beta1 kind: IPAddressPool metadata: name: first-pool namespace: metallb-system spec: addresses: - x.x.x.x-x.x.x.y --- --- apiVersion: v1 kind: Service metadata: name: nginx-svc namespace: hugo labels: app: nginx-hugo spec: type: LoadBalancer selector: app: nginx-hugo ports: - name: http port: 80 targetPort: 80 - name: https port: 443 targetPort: 443 --- --- apiVersion: metallb.io/v1beta1 kind: L2Advertisement metadata: name: first-pool namespace: metallb-system --- " />
-<meta property="og:url" content="/manifests/metallb-config/" />
+<meta property="og:url" content="//localhost:1313/manifests/metallb-config/" />
 <meta property="og:site_name" content="Tdebian" />
 
   
-    <meta property="og:image" content="/img/favicon/blue.png">
+    <meta property="og:image" content="//localhost:1313/img/favicon/blue.png">
   
 
 <meta property="og:image:width" content="1200">
@@ -150,7 +150,7 @@
     
 <article class="post">
   <h1 class="post-title">
-    <a href="/manifests/metallb-config/">Load balancer</a>
+    <a href="//localhost:1313/manifests/metallb-config/">Load balancer</a>
   </h1>
   <div class="post-meta"><time class="post-date">2025-04-12</time>
     

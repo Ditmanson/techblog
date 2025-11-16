@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Tdebian</title>
+    <link>//localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on Tdebian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tech Stack</title>
+      <link>//localhost:1313/posts/techstack/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/techstack/</guid>
+      <description>&lt;h1 id=&#34;techstack&#34;&gt;Techstack&lt;/h1&gt;
+&lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;omarchy&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://omarchy.org/&#34;&gt;http://omarchy.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It feels different than a debian or ubuntu distro on the fact that it&amp;rsquo;s super vim focused. It comes equipped with &lt;a href=&#34;https://wiki.archlinux.org/title/Hyprland&#34;&gt;hyperland&lt;/a&gt;, and a preconfigured arch setup. There&amp;rsquo;s no complicated set-up and bluetooth/wifi work out of the box. It has a bunch of pre-configured software installed, some of it needs changing and some I&amp;rsquo;m still checking out.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;omarchy-os&#34;&gt;Omarchy OS&lt;/h4&gt;
+&lt;p&gt;The keybindings are pretty sick, and easy to change in the $HOME/.config/hypr/bindings.conf. The software is pretty opinionated, but we can change the ones we don&amp;rsquo;t like. The default password manager is 1password, which we currently use. I&amp;rsquo;m planning to swap over to selfhosted just haven&amp;rsquo;t goettn around to it. The browser installed is some sort of stripped down chromium, there&amp;rsquo;s stuff in the config files about brave so maybe it&amp;rsquo;s related. I took that out and installed qute browser instead. Neovim is the default code editor. I&amp;rsquo;m used to plain old vim that comes with every dnf install; however, I&amp;rsquo;m giving it a try. The Neovim distro, if that&amp;rsquo;s what we call it, is lazyvim. My first impressions is, I mostly hate it. But I think that&amp;rsquo;s just cause I haven&amp;rsquo;t figured out how to turn off all the extra garbage. Spotify is pre-installed which is what I use; but again, you can swap out the hyperland shortcuts, so if you want to switch it up, it&amp;rsquo;s super easy.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;techstack&#34;&gt;Techstack&lt;/h1&gt;
+&lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;omarchy&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://omarchy.org/&#34;&gt;http://omarchy.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It feels different than a debian or ubuntu distro on the fact that it&amp;rsquo;s super vim focused. It comes equipped with &lt;a href=&#34;https://wiki.archlinux.org/title/Hyprland&#34;&gt;hyperland&lt;/a&gt;, and a preconfigured arch setup. There&amp;rsquo;s no complicated set-up and bluetooth/wifi work out of the box. It has a bunch of pre-configured software installed, some of it needs changing and some I&amp;rsquo;m still checking out.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;omarchy-os&#34;&gt;Omarchy OS&lt;/h4&gt;
+&lt;p&gt;The keybindings are pretty sick, and easy to change in the $HOME/.config/hypr/bindings.conf. The software is pretty opinionated, but we can change the ones we don&amp;rsquo;t like. The default password manager is 1password, which we currently use. I&amp;rsquo;m planning to swap over to selfhosted just haven&amp;rsquo;t goettn around to it. The browser installed is some sort of stripped down chromium, there&amp;rsquo;s stuff in the config files about brave so maybe it&amp;rsquo;s related. I took that out and installed qute browser instead. Neovim is the default code editor. I&amp;rsquo;m used to plain old vim that comes with every dnf install; however, I&amp;rsquo;m giving it a try. The Neovim distro, if that&amp;rsquo;s what we call it, is lazyvim. My first impressions is, I mostly hate it. But I think that&amp;rsquo;s just cause I haven&amp;rsquo;t figured out how to turn off all the extra garbage. Spotify is pre-installed which is what I use; but again, you can swap out the hyperland shortcuts, so if you want to switch it up, it&amp;rsquo;s super easy.&lt;/p&gt;
+&lt;h4 id=&#34;qutebrowser&#34;&gt;Qutebrowser&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://qutebrowser.org/&#34;&gt;Qutebrowser&lt;/a&gt; is super sick as far as browser&amp;rsquo;s go. It&amp;rsquo;s open source python browser. You can call it from the command line. You can edit the configs from a vim like command. There&amp;rsquo;s a basic pi-hole style ad-blocker. You can update the links with a command, adblock-update. They have all the code opensource so you know they aren&amp;rsquo;t sending your info back to google or mozilla or anyone else. The keybindings takes some getting used to; &lt;strong&gt;BUT&lt;/strong&gt; they are sweet, check them out &lt;a href=&#34;#ZgotmplZ&#34;&gt;here&lt;/a&gt;. You can&amp;rsquo;t add plugins, so there&amp;rsquo;s not a good way of blocking youtube adds. I saw a cool way around that on &lt;a href=&#34;https://www.youtube.com/watch?v=rMYMfnOpxP0&amp;amp;t=392s&#34;&gt;distrotube&lt;/a&gt; .You open the youtube links with MPV. To name things easier, in the .config/qutebrowser/config.py you can add this line &lt;code&gt;config.bind(&#39;M&#39;, &#39;hint links spawn mpv {hint-url}&#39;)&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;nvim&#34;&gt;Nvim&lt;/h4&gt;
+&lt;p&gt;I&amp;rsquo;m still getting used to lazyvim. I need to turn a bunch of this stuff off. Things like the distracting autocomplete suggestions. Don&amp;rsquo;t like that. I&amp;rsquo;m used to the commands being at the bottom, the command box seems like a bit much for vim, if you ask me. If you accidently open it in a directory, it looks nicer than netrw;however, I don&amp;rsquo;t know how to make it dispear. I kind of feel like if you think you need a code tree open all the time, then maybe you belong on vscode. But it&amp;rsquo;s not all bad. Omarchy has built in theme changing, which changes the color and look of the desktop, terminal, and nvim editor. That&amp;rsquo;s pretty sweet. I think that&amp;rsquo;s the only reason I haven&amp;rsquo;t switched back yet. All the keybindings are &lt;a href=&#34;https://www.lazyvim.org/keymaps&#34;&gt;here&lt;/a&gt;. So far they have mostly disapointed me, probably because I&amp;rsquo;m not used to them. But the only one I wanted to try was the markdown-preview &lt;!-- raw HTML omitted --&gt;cp . However, apparently that plugin didn&amp;rsquo;t make the cut. So I&amp;rsquo;ll have to figure out the plugin manager.&lt;/p&gt;
+&lt;h4 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h4&gt;
+&lt;p&gt;I&amp;rsquo;ve got 2 nodes running off &lt;a href=&#34;https://docs.k3s.io/&#34;&gt;k3s&lt;/a&gt;. I don&amp;rsquo;t use any cloud software. Everything is set up on &lt;a href=&#34;https://metallb.io/&#34;&gt;metallb&lt;/a&gt;. One thing to note, if you want to copy me you&amp;rsquo;ll need to disable k3s default loadbalancer, see &lt;a href=&#34;https://metallb.io/configuration/k3s/&#34;&gt;here&lt;/a&gt;. You can do it when you bring up your first node, but if you don&amp;rsquo;t. Then just add &lt;code&gt;ExecStart=/usr/local/bin/k3s server --disable servicelb \&lt;/code&gt; to the end of /etc/systemd/system/k3s.service.&lt;/p&gt;
+&lt;p&gt;For ingress I&amp;rsquo;m using istio for public routing. Private routing is done through metallb loadbalancers. Since I have 2 nodes, I need shared disk storage. For that I use &lt;a href=&#34;https://github.com/kubernetes-csi/csi-driver-nfs&#34;&gt;nfs-csi-driver&lt;/a&gt;. It&amp;rsquo;s a bit tricky to set up the nfs kernel on the arch system, see &lt;a href=&#34;https://wiki.archlinux.org/title/NFS&#34;&gt;here&lt;/a&gt;. The big change from all the debian instructions is restarting your nfs server is you need to use &lt;a href=&#34;https://www.linuxfromscratch.org/blfs/view/cvs/basicnet/nfs-utils.html&#34;&gt;nfs-utils&lt;/a&gt;. I ended up just feeding a chat bot the debain docs and asket it to translate it to arch. It fixed it up for me.&lt;/p&gt;
+&lt;p&gt;Using nginx to host Webpage from a hugo site.&lt;/p&gt;
+&lt;p&gt;I have cnpg and pgadmin hooked up and routed on the private network. The work I did on them got erased, but it wasn&amp;rsquo;t much anyways. I&amp;rsquo;ve decided I&amp;rsquo;m going to learn fast api instead of learning sql. So nothing&amp;rsquo;s really lost.&lt;/p&gt;
+&lt;p&gt;Speaking of losing things. Thankfully I keep all my manifests in &lt;a href=&#34;https://argo-cd.readthedocs.io/en/stable/&#34;&gt;ArgoCD&lt;/a&gt;. Bringing up a cluster from scartch only required kicking the cnpg operator when I needed to redownload the crd&amp;rsquo;s. You can grab my &lt;a href=&#34;https://github.com/Ditmanson/argocluster&#34;&gt;manifests&lt;/a&gt; &lt;a href=&#34;https://github.com/Ditmanson/argobase&#34;&gt;bootstrap app&lt;/a&gt; if you want. Probably the next app is going to be a fastapi app.&lt;/p&gt;
+&lt;h4 id=&#34;router&#34;&gt;Router&lt;/h4&gt;
+&lt;p&gt;Speaking of losing everything. The reason I lost everything, is when the power went out my IP&amp;rsquo;s all changed. While trying to fix it, I ended up getting my cluster stuck to a low ip address and I somehow locked it. I didn&amp;rsquo;t have much to lose, so I uninstalled and reinstalled, but before that; I configured static ip&amp;rsquo;s on my pfsense router. PFsense is a pretty cool little hobby project if you want to learn network stuff. I used it for &lt;a href=&#34;https://www.snort.org/documents&#34;&gt;snort&lt;/a&gt; and I used to configure network wide vpn&amp;rsquo;s with openvpn. However, coding network vpn&amp;rsquo;s are a bit static, and I like switching every device to a different IP every day, so we use it on each device now. For VPN&amp;rsquo;s we switch between a few, but we always stick wtih something from Europe since they have the GDPR.&lt;/p&gt;
+&lt;h4 id=&#34;other&#34;&gt;OTHER&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zsa.io/voyager&#34;&gt;keyboard voyager&lt;/a&gt; Pretty much the sickest keyboard. If bluetooth is important then you need something zmk flashed running with a bluetooth chip. If you go wired, you get &lt;a href=&#34;https://configure.zsa.io/voyager/layouts/default/latest/0/intro&#34;&gt;qmk&lt;/a&gt; which means you can configure with zsa. Which is what makes them so sweet.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://duckduckgo.com/?q=bambu&amp;#43;printer&amp;amp;ia=web&#34;&gt;Bambu 3D Printer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/title/RAID&#34;&gt;NAS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Static Site Generater&lt;/a&gt;, This thing&amp;rsquo;s pretty sweet for making quick websites with markdown&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

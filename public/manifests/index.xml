@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manifests on Tdebian</title>
-    <link>/manifests/</link>
+    <link>//localhost:1313/manifests/</link>
     <description>Recent content in Manifests on Tdebian</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 10 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="/manifests/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/manifests/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WebServer</title>
-      <link>/manifests/nginx/</link>
+      <link>//localhost:1313/manifests/nginx/</link>
       <pubDate>Sat, 10 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>/manifests/nginx/</guid>
+      <guid>//localhost:1313/manifests/nginx/</guid>
       <description>&lt;p&gt;Not much to show here, but here&amp;rsquo;s my nginx pod. I&amp;rsquo;ll switch this to a deployment after I get a second node up and running&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;apiVersion&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;v1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;kind&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Pod&lt;/span&gt;
@@ -63,10 +63,10 @@
     
     <item>
       <title>Load balancer</title>
-      <link>/manifests/metallb-config/</link>
+      <link>//localhost:1313/manifests/metallb-config/</link>
       <pubDate>Sat, 12 Apr 2025 22:00:00 +0000</pubDate>
       
-      <guid>/manifests/metallb-config/</guid>
+      <guid>//localhost:1313/manifests/metallb-config/</guid>
       <description>&lt;p&gt;I wanted to run all my apps off kubernetes instead of the more popular homelab option of docker_compose. The intention is to get better at work; however, most loadbalancers don&amp;rsquo;t work on bare metal. After eventually discovering this I installed metallb and removed the stock loadbalancer form k3s.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;apiVersion&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;metallb.io/v1beta1&lt;/span&gt;
@@ -149,10 +149,10 @@
     
     <item>
       <title>nfs server stuf</title>
-      <link>/manifests/nfs/</link>
+      <link>//localhost:1313/manifests/nfs/</link>
       <pubDate>Sat, 12 Apr 2025 22:00:00 +0000</pubDate>
       
-      <guid>/manifests/nfs/</guid>
+      <guid>//localhost:1313/manifests/nfs/</guid>
       <description>&lt;p&gt;Using the csi-driver-nfs from a helm install, creating a storage class, and then a pvc on my nas. The nas and the debian server are plugged into the same switch with cat5e cable so it works out pretty well.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#values.yml&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;customLabels&lt;/span&gt;: {}
